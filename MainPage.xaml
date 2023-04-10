@@ -3,45 +3,67 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyfirstMauiApp.MainPage">
 
+
     <ScrollView>
         <VerticalStackLayout
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Center">
 
+
             <Image
-                Source="dotnet_bot.png"
+                Source="sl.jpg"
                 SemanticProperties.Description="Cute dot net bot waving hi to you!"
                 HeightRequest="200"
                 HorizontalOptions="Center" />
 
             <Label
-                Text="Hello, World!"
+                Text="Hello, Sri Lanka!"
                 SemanticProperties.HeadingLevel="Level1"
                 FontSize="32"
                 HorizontalOptions="Center" />
 
             <Label
-                Text="Welcome to .NET Multi-platform App UI"
+                Text="Welcome to Sri Lanka"
                 SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+                SemanticProperties.Description="Welcome to Sri Lanka"
                 FontSize="18"
                 HorizontalOptions="Center" />
 
+
+            <Label 
+                Text="{Binding CountDisplay}"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Welcome to Sri Lanka"
+                FontSize="18"
+                HorizontalOptions="Center"
+                />
+            <HorizontalStackLayout>
+
             <Button
                 x:Name="CounterBtn"
-                Text="Click me"
+                Text = "{Binding CountDisplay}"
                 SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Start" />
+                 Command="{Binding  DisplayCount}"
+                HorizontalOptions="Start" 
+                 />
+
             <Button
                 x:Name="MyPageBtn"
-                Text="mypage"
+                Text="mypage chatura"
                 SemanticProperties.Hint="go to my page"
                 Clicked="MyPageBtn_Clicked"
-                HorizontalOptions="Center" />
+                HorizontalOptions="Center" 
+                 />
+
+
+            </HorizontalStackLayout>
+
+
 
         </VerticalStackLayout>
     </ScrollView>
+
+
 
 </ContentPage>

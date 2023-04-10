@@ -1,38 +1,24 @@
-﻿namespace MyfirstMauiApp;
+﻿using Microsoft.Maui.Controls.Xaml;
+using System.Windows.Input;
+using ViewModel;
 
+namespace MyfirstMauiApp;
+[XamlCompilation(XamlCompilationOptions.Compile)]
 public partial class MainPage : ContentPage
 {
-	int count = 0;
 
-	public MainPage()
-	{
-		InitializeComponent();
-	}
+    
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
+    public MainPage()
+    {
+        InitializeComponent();
+        BindingContext = new MainViewModel();
+    }
 
-		if (count%2 == 1)
-		{ 
-			CounterBtn.Text = $"Clicked {count} times";
-			CounterBtn.BackgroundColor = Colors.Maroon;
-		}
-			
-		else
-		{
-            CounterBtn.Text = $"Clicked {count} times";
-            CounterBtn.BackgroundColor = Colors.GreenYellow;
-        }
-			
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
-
+    
     private void MyPageBtn_Clicked(object sender, EventArgs e)
     {
-		MyPage myPage = new MyPage();
-		//myPage.LoadFromXaml(MyPageBtn.Text);
+         Navigation.PushAsync(new MyPage());
     }
 }
 

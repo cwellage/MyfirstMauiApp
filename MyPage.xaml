@@ -8,5 +8,21 @@
             Text="Chatura´s page"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+
+          
+
+        <Button x:Name="imageBtn" Text="Take a picture" Clicked="imageBtn_Clicked">
+
+        </Button>
+
+        <Grid RowDefinitions="auto,*,*,auto">
+            <Image x:Name="myimage"  WidthRequest="200" HeightRequest="250" Grid.Row="0" >
+
+            </Image>
+            
+
+        </Grid>
+
+     
     </VerticalStackLayout>
 </ContentPage>

@@ -40,7 +40,7 @@
                 />
             <HorizontalStackLayout>
 
-            <Button
+                <Button
                 x:Name="CounterBtn"
                 Text = "{Binding CountDisplay}"
                 SemanticProperties.Hint="Counts the number of times you click"
@@ -48,7 +48,7 @@
                 HorizontalOptions="Start" 
                  />
 
-            <Button
+                <Button
                 x:Name="MyPageBtn"
                 Text="mypage chatura"
                 SemanticProperties.Hint="go to my page"
@@ -63,7 +63,5 @@
 
         </VerticalStackLayout>
     </ScrollView>
-
-
 
 </ContentPage>

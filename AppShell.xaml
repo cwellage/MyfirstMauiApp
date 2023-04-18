@@ -4,11 +4,14 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MyfirstMauiApp"
-    Shell.FlyoutBehavior="Disabled">
+    Shell.FlyoutBehavior="Flyout">
 
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Route="MainPage" 
+        x:Name="AppShellContent"/>
 
+    <MenuFlyoutItem Text="Counter" IconImageSource="tab_about.png" Clicked="OnCounterClicked" />
+        <MenuFlyoutItem Text="Camera" IconImageSource="tab_about.png" Clicked="OnCameraClicked"/>
 </Shell>

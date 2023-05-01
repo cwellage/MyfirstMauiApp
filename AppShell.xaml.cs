@@ -2,14 +2,17 @@
 
 public partial class AppShell : Shell
 {
-	public AppShell()
+    public MainPage _MainPage { get; set; }
+    public AppShell(MainPage mainpage)
 	{
 		InitializeComponent();
-	}
+        _MainPage = mainpage;
+
+    }
 
     private void OnCounterClicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new MainPage(new ViewModel.MainViewModel()));
+        Navigation.PopToRootAsync(true);// homepage
         Shell.Current.FlyoutIsPresented = false;
     }
 

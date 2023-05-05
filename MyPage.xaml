@@ -19,10 +19,12 @@
             <Image x:Name="myimage"  WidthRequest="200" HeightRequest="250" Grid.Row="0" >
 
             </Image>
-            
-
         </Grid>
 
-     
+        <Label x:Name="LblEmotion"
+            Text="{Binding Emotion}"
+            VerticalOptions="End" 
+            HorizontalOptions="Center" />
+        
     </VerticalStackLayout>
 </ContentPage>

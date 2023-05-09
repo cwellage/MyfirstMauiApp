@@ -74,7 +74,12 @@
     <ProjectReference Include="ViewModel\ViewModel.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <MauiXaml Update="MyPage.xaml">
+    <Compile Update="CameraPage.xaml.cs">
+      <DependentUpon>CameraPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <MauiXaml Update="CameraPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
   </ItemGroup>

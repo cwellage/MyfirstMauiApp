@@ -46,12 +46,7 @@ public partial class MyPage : ContentPage
         try
         {
             HttpClientHandler handler = new HttpClientHandler();
-            handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) =>
-            {
-                if (cert.Issuer.Equals("CN=localhost"))
-                    return true;
-                return errors == System.Net.Security.SslPolicyErrors.None;
-            };
+    
             HttpClient client = new HttpClient(handler);
 
             HttpRequestMessage requestMessage = new HttpRequestMessage();
@@ -59,11 +54,11 @@ public partial class MyPage : ContentPage
             requestMessage.Method = HttpMethod.Get;
             requestMessage.Options.TryAdd("stream", sourceStream);
 
+
             //var response =  client.Send(requestMessage);
 
-            var response = await client.GetAsync("https://10.0.2.2:7174/Emotion/EmotionTemp").ConfigureAwait(true);
-            var responseDeserialize = JsonSerializer.Deserialize<string>(response.ToString());
-            Emotion = responseDeserialize;
+            var response = await client.GetAsync("https://sentimentappapi.azurewebsites.net/Emotion/EmotionTemp").ConfigureAwait(true);
+            Emotion = await response.Content.ReadAsStringAsync();
         }
         catch (Exception e)
         {

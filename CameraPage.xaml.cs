@@ -1,6 +1,8 @@
 using Microsoft.Maui.Media;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
+using System.Net.Http.Json;
 using System.Security.Authentication;
 using System.Text.Json;
 
@@ -49,15 +51,18 @@ public partial class MyPage : ContentPage
     
             HttpClient client = new HttpClient(handler);
 
-            HttpRequestMessage requestMessage = new HttpRequestMessage();
-            requestMessage.RequestUri = new Uri("https://10.0.2.2:7174/Emotion");
-            requestMessage.Method = HttpMethod.Get;
-            requestMessage.Options.TryAdd("stream", sourceStream);
+            var memoryStream = new MemoryStream();
+            sourceStream.CopyTo(memoryStream);
+            byte[] byteArray = memoryStream.ToArray();
+
+            // Create a new HttpRequestMessage with the necessary parameters
+
+            var content = Convert.ToBase64String(byteArray);
 
 
             //var response =  client.Send(requestMessage);
 
-            var response = await client.GetAsync("https://sentimentappapi.azurewebsites.net/Emotion/EmotionTemp").ConfigureAwait(true);
+            var response = await client.PostAsJsonAsync("https://localhost:44363/Emotion/FaceEmotion", content).ConfigureAwait(true);
             Emotion = await response.Content.ReadAsStringAsync();
         }
         catch (Exception e)

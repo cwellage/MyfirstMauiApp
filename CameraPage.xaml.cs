@@ -35,7 +35,7 @@ public partial class MyPage : ContentPage
      FileResult  photo = await MediaPicker.Default.CapturePhotoAsync();
         if (photo != null)
         {          
-            Stream stream =  await photo.OpenReadAsync().ConfigureAwait(false); 
+            Stream stream =  await photo.OpenReadAsync().ConfigureAwait(true); 
             SourceStream = stream;
             ImageSource = ImageSource.FromStream(() => SourceStream);
             myimage.Source = ImageSource;
@@ -62,7 +62,7 @@ public partial class MyPage : ContentPage
 
             //var response =  client.Send(requestMessage);
 
-            var response = await client.PostAsJsonAsync("https://localhost:44363/Emotion/FaceEmotion", content).ConfigureAwait(true);
+            var response = await client.PostAsJsonAsync("https://127.0.0.1:44363/Emotion/FaceEmotion", content).ConfigureAwait(true);
             Emotion = await response.Content.ReadAsStringAsync();
         }
         catch (Exception e)
